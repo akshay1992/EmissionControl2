@@ -18,7 +18,6 @@ using namespace al;
 
 void ecInterface::onInit() {
   title("EmissionControl2");
-
   execDir = al::File::directory(util::getExecutablePath());
   userPath = util::getUserHomePath();
 #ifdef __APPLE__  // Uses userPath

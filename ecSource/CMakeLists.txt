@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.10" CACHE STRING "Minimum OS X deployment version")
 
+include(GNUInstallDirs)
 
 # name of application. replace 'app' with desired app name
 set(APP_NAME EmissionControl2)
@@ -95,6 +96,12 @@ add_executable(${APP_NAME} MACOSX_BUNDLE
   ${RESOURCE_FILES}
   ${ICON}
 )
+
+install(TARGETS ${APP_NAME}
+RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/emissioncontrol2
+)
+
 
 target_include_directories(${APP_NAME} PRIVATE 
   ${CMAKE_SOURCE_DIR}/external
